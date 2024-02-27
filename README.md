@@ -2,6 +2,40 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Instrumenting for Honeycomb
+
+### Install Packages
+
+```sh
+npm install --save \
+@honeycombio/opentelemetry-web \
+@opentelemetry/auto-instrumentations-web
+```
+
+### Get a Honeycomb API Key
+
+[Get a Honeycomb API key](https://docs.honeycomb.io/quickstart/#create-a-honeycomb-account).
+
+### Initialize Tracing
+
+Initialize tracing at the start of your application by updating `main.ts`:
+
+```ts
+import { HoneycombWebSDK } from '@honeycombio/opentelemetry-web';
+import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
+
+const sdk = new HoneycombWebSDK({
+  apiKey: 'YOUR_KEY_HERE',
+  serviceName: 'create-vue',
+  instrumentations: [getWebAutoInstrumentations()] // add auto-instrumentation
+})
+sdk.start()
+```
+
+### Run
+
+Build and run your application, and then look for data in Honeycomb.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).

@@ -16,6 +16,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@honeycombio/opentelemetry-web": "^0.0.2",
+    "@opentelemetry/auto-instrumentations-web": "^0.36.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
